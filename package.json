@@ -1,0 +1,10 @@
+{
+  "name": "shiftly-root",
+  "version": "1.0.0",
+  "description": "Root orchestrator for Shiftly",
+  "scripts": {
+    "postinstall": "npm install --prefix backend",
+    "start": "npm start --prefix backend",
+    "dev": "npm run dev --prefix backend"
+  }
+}

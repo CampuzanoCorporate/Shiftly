@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+body {
+  font-family: 'Outfit', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-image:
+    radial-gradient(circle at top left, rgba(8, 145, 178, 0.08), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.06), transparent 24%);
+  letter-spacing: -0.01em;
+}
+.dark body {
+  background-image:
+    radial-gradient(circle at top left, rgba(34, 211, 238, 0.12), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.08), transparent 24%);
+}
+
+[v-cloak] {
+  display: none;
+}
+
+/* ── Scrollbar personalizado ─────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+.dark ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+.dark ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+/* ── Glassmorphism ───────────────────────────────────────────────── */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.dark .glass-panel {
+  /* Dark glass tintado con el azul oscuro del logo (#164e63 = cyan-900) */
+  background: rgba(8, 51, 68, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(6, 182, 212, 0.09);
+}
+
+/* ── Animaciones ─────────────────────────────────────────────────── */
+@keyframes pulse-ring {
+  0%   { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+  70%  { transform: scale(1);    box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+.animate-pulse-warning { animation: pulse-ring 2s infinite; }
+
+.transition-all-300 { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+
+.shadow-soft {
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+}
+
+.dark .shadow-soft {
+  box-shadow: 0 24px 70px rgba(2, 6, 23, 0.45);
+}
+
+/* ── Inputs sin spin button ──────────────────────────────────────── */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+input[type="number"] { -moz-appearance: textfield; }
+
+/* ── PDF: estilos temporales de impresión ────────────────────────── */
+.is-printing-pdf {
+  width: 1200px !important;
+  max-width: none !important;
+  min-width: 1200px !important;
+  overflow: visible !important;
+  background: white !important;
+  color: black !important;
+}
+.is-printing-pdf .overflow-x-auto {
+  overflow: visible !important;
+  overflow-x: visible !important;
+  max-width: none !important;
+}
+.is-printing-pdf table {
+  width: 1200px !important;
+  min-width: 1200px !important;
+  table-layout: fixed !important;
+}
+.is-printing-pdf th,
+.is-printing-pdf td {
+  word-wrap: break-word !important;
+  white-space: normal !important;
+}
+.is-printing-pdf .min-w-\[900px\] { min-width: 100% !important; }
+
+/* Desactivar stickiness y redimensionar columnas */
+.is-printing-pdf th.sticky,
+.is-printing-pdf td.sticky {
+  position: static !important;
+  width: 180px !important;
+  min-width: 180px !important;
+  max-width: 180px !important;
+  box-shadow: none !important;
+  border-right-width: 1px !important;
+}
+.is-printing-pdf th:nth-child(2),
+.is-printing-pdf td:nth-child(2) {
+  width: 80px !important;
+  min-width: 80px !important;
+  max-width: 80px !important;
+}
+.is-printing-pdf th:nth-child(n+3),
+.is-printing-pdf td:nth-child(n+3) {
+  width: 130px !important;
+  min-width: 130px !important;
+  max-width: 130px !important;
+}
+.is-printing-pdf button,
+.is-printing-pdf span,
+.is-printing-pdf div { text-overflow: clip !important; }
+
+/* Cabecera de impresión: oculta en pantalla, visible en PDF */
+.print-header { display: none !important; }
+.is-printing-pdf .print-header { display: flex !important; }
