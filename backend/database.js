@@ -4,7 +4,12 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const dbPath = path.resolve(__dirname, 'database.json');
+const dataDir = process.env.SHIFTLY_DATA_DIR
+  ? path.resolve(process.env.SHIFTLY_DATA_DIR)
+  : __dirname;
+const dbPath = process.env.SHIFTLY_DB_PATH
+  ? path.resolve(process.env.SHIFTLY_DB_PATH)
+  : path.resolve(dataDir, 'database.json');
 
 const defaultLicenseKeys = [
   { key: 'SHIFTLY-START-2026', label: 'Licencia demo inicial', active: true, usedBy: null },

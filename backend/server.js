@@ -19,6 +19,14 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.use(express.static(frontendPath));
 
+app.get('/api/health', (req, res) => {
+  res.json({
+    ok: true,
+    service: 'shiftly-backend',
+    timestamp: new Date().toISOString()
+  });
+});
+
 function normalizeEmail(email = '') {
   return email.trim().toLowerCase();
 }
